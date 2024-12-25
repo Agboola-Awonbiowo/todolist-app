@@ -9,12 +9,19 @@ const useTaskHooks = (initialTitle: string, onEdit: (newTitle: string) => void) 
     setIsEditing(false);
   };
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleEdit();
+    }
+  };
+
   return {
     isEditing,
     setIsEditing,
     newTitle,
     setNewTitle,
     handleEdit,
+    handleKeyUp
   };
 };
 

@@ -3,18 +3,19 @@ import TaskFilter from "../taskfilter";
 import useListTasks from "./hooks";
 
 const TaskList: React.FC = () => {
-    const {
-        toggleTask,
-        deleteTask,
-        filter,
-        setFilter,
-        filteredTasks,
-        editTask,
-      } = useListTasks();
+  const {
+    toggleTask,
+    deleteTask,
+    filter,
+    setFilter,
+    filteredTasks,
+    editTask,
+    tasks,
+  } = useListTasks();
 
   return (
     <div>
-      <TaskFilter filter={filter} setFilter={setFilter} />
+      {tasks.length > 0 && <TaskFilter filter={filter} setFilter={setFilter} />}
       <div className="space-y-4">
         {filteredTasks.map((task) => (
           <Task

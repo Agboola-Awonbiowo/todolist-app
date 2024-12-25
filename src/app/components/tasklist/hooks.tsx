@@ -20,6 +20,7 @@ const useListTasks = () => {
   };
 
   return {
+    tasks,
     toggleTask,
     deleteTask,
     filter,
