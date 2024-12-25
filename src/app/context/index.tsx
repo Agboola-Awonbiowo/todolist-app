@@ -13,6 +13,7 @@ interface TaskContextProps {
   addTask: (title: string) => void;
   toggleTask: (id: number) => void;
   deleteTask: (id: number) => void;
+  setTasks: (tasks: Task[]) => void;
 }
 
 const TaskContext = createContext<TaskContextProps | undefined>(undefined);
@@ -52,7 +53,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, setTasks }}>
       {children}
     </TaskContext.Provider>
   );
