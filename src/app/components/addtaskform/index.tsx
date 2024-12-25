@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../button";
 import Inputfield from "../inputfield";
 import useAddTaskForm from "./hooks";
@@ -7,7 +6,7 @@ interface AddTaskFormProps {
   onAddTask: (title: string) => void;
 }
 
-const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
+const AddTaskForm = ({ onAddTask }:AddTaskFormProps) => {
   const { title, setTitle, handleSubmit } = useAddTaskForm(onAddTask);
 
   return (

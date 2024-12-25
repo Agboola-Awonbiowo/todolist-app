@@ -2,7 +2,7 @@ import Task from "../task";
 import TaskFilter from "../taskfilter";
 import useListTasks from "./hooks";
 
-const TaskList: React.FC = () => {
+const TaskList = () => {
   const {
     toggleTask,
     deleteTask,

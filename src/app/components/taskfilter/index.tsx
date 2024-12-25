@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../button";
 
 interface TaskFilterProps {
@@ -6,7 +5,7 @@ interface TaskFilterProps {
   setFilter: (filter: "all" | "completed" | "uncompleted") => void;
 }
 
-const TaskFilter: React.FC<TaskFilterProps> = ({ filter, setFilter }) => {
+const TaskFilter = ({ filter, setFilter }: TaskFilterProps) => {
   return (
     <div className="flex space-x-2 mb-4">
       <Button
