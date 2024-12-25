@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "../button";
+import Inputfield from "../inputfield";
 import useTaskHooks from "./hooks";
 
 interface TaskProps {
@@ -16,12 +18,11 @@ const Task = ({ title, completed, onToggle, onDelete, onEdit }: TaskProps) => {
   return (
     <div className="flex items-center justify-between p-4 bg-gray-100 rounded-lg shadow-md">
       {isEditing ? (
-        <input
-          type="text"
+        <Inputfield
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           onBlur={handleEdit}
-          onKeyUp={(e) => e.key === "Enter" && handleEdit()}
+          onKeyUp={(e: { key: string }) => e.key === "Enter" && handleEdit()}
           className="flex-1 p-2 border border-gray-300 rounded-lg"
         />
       ) : (
@@ -32,12 +33,10 @@ const Task = ({ title, completed, onToggle, onDelete, onEdit }: TaskProps) => {
           {title}
         </span>
       )}
-      <button className="ml-4 text-blue-500" onClick={() => setIsEditing(true)}>
-        Edit
-      </button>
-      <button className="ml-4 text-red-500" onClick={onDelete}>
+      <Button onClick={() => setIsEditing(true)}>Edit</Button>
+      <Button className="ml-4 text-red-500" onClick={onDelete}>
         Delete
-      </button>
+      </Button>
     </div>
   );
 };
