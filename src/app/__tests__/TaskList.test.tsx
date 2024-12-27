@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import TaskList from "../components/tasklist";
-import useListTasks from "../components/tasklist/hooks";
+import { useListTasks } from "../components/tasklist/hooks";
 
 jest.mock("../components/tasklist/hooks");
 

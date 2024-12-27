@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import Todo from "../components/todo";
 import { useTasks } from "@/app/context";
-import useListTasks from "../components/tasklist/hooks";
+import { useListTasks } from "../components/tasklist/hooks";
 
 jest.mock("@/app/context");
 jest.mock("../components/tasklist/hooks");
