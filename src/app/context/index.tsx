@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-const TASKS_STORAGE_KEY = 'tasks';
+import React, { createContext, ReactNode, useContext } from "react";
+import { useTaskState } from "./useTaskState"; // Import the custom hook
 
 interface Task {
   id: number;
@@ -21,40 +20,17 @@ const TaskContext = createContext<TaskContextProps | undefined>(undefined);
 export const useTasks = () => {
   const context = useContext(TaskContext);
   if (!context) {
-    throw new Error('useTasks must be used within a TaskProvider');
+    throw new Error("useTasks must be used within a TaskProvider");
   }
   return context;
 };
 
-export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem(TASKS_STORAGE_KEY);
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks));
-  }, [tasks]);
-
-  const addTask = (title: string) => {
-    setTasks([...tasks, { id: Date.now(), title, completed: false }]);
-  };
-
-  const toggleTask = (id: number) => {
-    setTasks(tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task));
-  };
-
-  const deleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+export const TaskProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const taskState = useTaskState();
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, setTasks }}>
-      {children}
-    </TaskContext.Provider>
+    <TaskContext.Provider value={taskState}>{children}</TaskContext.Provider>
   );
 };

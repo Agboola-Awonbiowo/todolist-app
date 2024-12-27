@@ -1,6 +1,6 @@
 import Button from "../button";
 import Inputfield from "../inputfield";
-import useTaskHooks from "./hooks";
+import { useTaskHooks } from "./hooks";
 
 interface TaskProps {
   title: string;

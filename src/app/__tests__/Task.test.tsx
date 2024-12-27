@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import Task from "../components/task";
-import useTaskHooks from "../components/task/hooks";
+import { useTaskHooks } from "../components/task/hooks";
 
 jest.mock("../components/task/hooks");
 
